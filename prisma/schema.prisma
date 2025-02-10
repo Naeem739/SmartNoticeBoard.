@@ -36,3 +36,7 @@ model AllNotice {
   createdAt   DateTime @default(now()) // Timestamp of creation
   updatedAt   DateTime @updatedAt // Timestamp of last update
 }
+
+modelAbc{
+  
+}
