@@ -1,0 +1,38 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String?
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model notices {
+  id      String @id @default(uuid()) // Unique identifier for each notice
+  notice_id   String? // Notice title (optional)
+  width   Int    // Width of the notice
+  height  Int    // Height of the notice
+  left    Int    // X-coordinate position
+  top     Int    // Y-coordinate position
+  color   String // Background color of the notice
+}
+
+
+model AllNotice {
+  id          String   @id @default(uuid()) // Unique identifier for each notice
+  title       String   // Title of the notice
+  description String   // Description of the notice
+  category    String   // Category of the notice
+  time        DateTime // Date and time of the notice
+  createdAt   DateTime @default(now()) // Timestamp of creation
+  updatedAt   DateTime @updatedAt // Timestamp of last update
+}
